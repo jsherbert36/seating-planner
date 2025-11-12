@@ -1,3 +1,5 @@
 com/seatingplanner/api/CorsFilter.class
 com/seatingplanner/api/Application.class
+com/seatingplanner/api/ApplicationConfig.class
+com/seatingplanner/api/HelloResponse.class
 com/seatingplanner/api/HelloServlet.class

@@ -1,26 +1,26 @@
 package com.seatingplanner.api;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+@Path("/hello")
+public class HelloServlet {
 
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-public class HelloServlet extends HttpServlet {
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("application/json");
-        
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello from Jetty!");
-        response.put("timestamp", String.valueOf(System.currentTimeMillis()));
-        
-        objectMapper.writeValue(resp.getWriter(), response);
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Get hello", description = "Returns a greeting message with timestamp", responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = @Content(schema = @Schema(implementation = HelloResponse.class)))
+    })
+    public HelloResponse sayHello() {
+        HelloResponse response = new HelloResponse();
+        response.message = "Hello from Jetty + Jersey!";
+        response.timestamp = System.currentTimeMillis();
+        return response;
     }
 }

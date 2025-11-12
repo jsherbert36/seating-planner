@@ -10,12 +10,14 @@
       <h2 class="text-2xl font-semibold mb-2">Backend response</h2>
 
       <div>
-        @let h = hello(); @if(h != null) {
+        @let err = error(); @if(err != null) {
+        <p class="text-red-300"><strong>Error:</strong> {{ err }}</p>
+        } @else { @let h = hello(); @if(h != null) {
         <p class="mb-1"><strong>Message:</strong> {{ h.message }}</p>
         <p class="text-sm"><strong>Timestamp:</strong> {{ h.timestamp }}</p>
         } @else {
         <p>Loading from backend...</p>
-        }
+        } }
       </div>
     </div>
   </div>

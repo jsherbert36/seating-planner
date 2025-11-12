@@ -13,6 +13,7 @@ export class App implements OnInit {
 
   // Holds the backend hello response (or null while loading)
   public readonly hello = signal<HelloResponse | null>(null);
+  public readonly error = signal<string | null>(null);
 
   constructor(private api: Api) {}
 
@@ -21,6 +22,7 @@ export class App implements OnInit {
       next: (res) => this.hello.set(res),
       error: (err) => {
         console.error('Failed to fetch /api/hello', err);
+        this.error.set('Failed to fetch hello from backend');
       },
     });
   }

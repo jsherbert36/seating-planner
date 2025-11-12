@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
  */
 export interface HelloResponse {
   message: string;
-  timestamp: string;
+  timestamp: number;
 }
 
 @Injectable({
