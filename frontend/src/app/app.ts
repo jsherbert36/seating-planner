@@ -1,12 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, signal } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Api, HelloResponse } from './services/api';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [NgIf],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrls: ['./app.css'],
 })
-export class App {
+export class App implements OnInit {
   public readonly title = signal('frontend');
+
+  // Holds the backend hello response (or null while loading)
+  public readonly hello = signal<HelloResponse | null>(null);
+
+  constructor(private api: Api) {}
+
+  ngOnInit(): void {
+    this.api.getHello().subscribe({
+      next: (res) => this.hello.set(res),
+      error: (err) => {
+        console.error('Failed to fetch /api/hello', err);
+      },
+    });
+  }
 }
