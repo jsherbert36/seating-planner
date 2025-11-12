@@ -1,9 +1,9 @@
 module.exports = {
   api: {
-    input: './openapi.json', // path in frontend produced by maven copy or manual
+    input: 'http://localhost:8080/api/openapi.json', // fetch from running backend
     output: {
       mode: 'single',
-      target: './src/app/api/generated.ts',
+      target: './src/app/services/api.ts',
       client: 'fetch', // or 'axios'
       prettier: true,
       override: {
