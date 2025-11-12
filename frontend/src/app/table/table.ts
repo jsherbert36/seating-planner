@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './table.css',
 })
 export class Table {
-
+  width = input<number>(200);
+  length = input<number>(100);
 }
