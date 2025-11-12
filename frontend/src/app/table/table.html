@@ -1,5 +1,18 @@
 <div 
-  class="border-2 border-black bg-blue-200"
-  [style.width.px]="width()"
-  [style.height.px]="length()">
+  class="bg-blue-200"
+  [style.width.px]="boxWidth()"
+  [style.height.px]="boxLength()"
+  style="border: 2px solid black; display: grid; position: relative;"
+  [style.grid-template-columns]="'repeat(' + width() + ', 1fr)'"
+  [style.grid-template-rows]="'repeat(' + length() + ', 1fr)'">
+  
+  @for (row of rows(); track rowIndex; let rowIndex = $index) {
+    @for (col of columns(); track colIndex; let colIndex = $index) {
+      <div style="border: 1px solid rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: center;">
+        @if (hasCircle(rowIndex, colIndex)) {
+          <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #333;"></div>
+        }
+      </div>
+    }
+  }
 </div>

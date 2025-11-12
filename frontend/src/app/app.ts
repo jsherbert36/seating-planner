@@ -14,6 +14,9 @@ export class App implements OnInit {
 
   // Holds the backend hello response (or null while loading)
   public readonly hello = signal<HelloResponse | null>(null);
+  
+  // Number of people
+  public readonly numPeople = signal<number>(8);
 
   constructor(private api: Api) {}
 
@@ -24,5 +27,12 @@ export class App implements OnInit {
         console.error('Failed to fetch /api/hello', err);
       },
     });
+  }
+  
+  updatePeople(value: string): void {
+    const num = parseInt(value, 10);
+    if (!isNaN(num) && num > 0) {
+      this.numPeople.set(num);
+    }
   }
 }
