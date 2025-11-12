@@ -1,0 +1,22 @@
+<div 
+  [style.width.px]="circleSize()"
+  [style.height.px]="circleSize()"
+  style="position: relative;">
+  
+  <!-- The circular table -->
+  <div 
+    class="bg-blue-200"
+    [style.width.px]="circleSize()"
+    [style.height.px]="circleSize()"
+    style="border: 2px solid black; border-radius: 50%;">
+  </div>
+  
+  <!-- People circles positioned around the edge -->
+  @for (pos of peoplePositions(); track $index) {
+    <div 
+      style="position: absolute; width: 20px; height: 20px; border-radius: 50%; background-color: #333; transform: translate(-50%, -50%);"
+      [style.left.px]="pos.x"
+      [style.top.px]="pos.y">
+    </div>
+  }
+</div>

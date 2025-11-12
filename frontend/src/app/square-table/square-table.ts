@@ -2,12 +2,12 @@ import { Component, input, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-table',
+  selector: 'app-square-table',
   imports: [CommonModule],
-  templateUrl: './table.html',
-  styleUrl: './table.css',
+  templateUrl: './square-table.html',
+  styleUrl: './square-table.css',
 })
-export class Table {
+export class SquareTable {
   // Grid dimensions (number of cells: 1-5)
   width = input<number>(5);  // number of columns
   length = input<number>(3); // number of rows

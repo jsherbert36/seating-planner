@@ -1,11 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Api, HelloResponse } from './services/api';
-import { Table } from './table/table';
+import { SquareTable } from './square-table/square-table';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Table],
+  imports: [SquareTable],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
