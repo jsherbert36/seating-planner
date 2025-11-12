@@ -1,10 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Api, HelloResponse } from './services/api';
+import { Table } from './table/table';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [Table],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
