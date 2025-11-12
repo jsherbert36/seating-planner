@@ -6,6 +6,7 @@ module.exports = {
       target: './src/app/services/api.ts',
       client: 'fetch', // or 'axios'
       prettier: true,
+      baseUrl: 'http://localhost:8080/api', // set base URL so generated code hits the backend
       override: {
         // keep default mutator; add customizations here if needed
       }

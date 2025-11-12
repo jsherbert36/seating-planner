@@ -36,7 +36,7 @@ export const getSayHelloUrl = () => {
 
   
 
-  return `/hello`
+  return `http://localhost:8080/api/hello`
 }
 
 export const sayHello = async ( options?: RequestInit): Promise<sayHelloResponse> => {
