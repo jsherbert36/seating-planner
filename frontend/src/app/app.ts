@@ -1,11 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { NgIf } from '@angular/common';
 import { Api, HelloResponse } from './services/api';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgIf],
+  imports: [],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })

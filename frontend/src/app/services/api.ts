@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 /**
@@ -16,7 +16,7 @@ export interface HelloResponse {
 export class Api {
   private apiUrl = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   /** Returns an observable of the hello payload from the backend. */
   getHello(): Observable<HelloResponse> {
